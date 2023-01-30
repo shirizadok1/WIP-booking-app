@@ -1,14 +1,27 @@
 import express from "express";
-
+import Hotel from "../models/Hotel.js";
+import { createError } from "../utils/error.js";
+import {
+  createHotel,
+  deleteHotel,
+  getAllHotel,
+  getHotel,
+  updateHotel,
+} from "../controllers/hotel.js";
 const router = express.Router();
 
 //CREATE
-router.post("/", (req,res)=>{
-
-})
+router.post("/", createHotel);
 //UPDATE
-//DELETE
-//GET
-//GET ALL
+router.put("/:id", updateHotel);
 
-export default router
+//DELETE
+router.delete("/:id", deleteHotel);
+
+//GET
+router.get("/:id", getHotel);
+
+//GET ALL
+router.get("/", getAllHotel);
+
+export default router;
